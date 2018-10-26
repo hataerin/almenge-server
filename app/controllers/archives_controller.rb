@@ -17,6 +17,8 @@ class ArchivesController < ApplicationController
   def create
     @archive = Archive.new(archive_params)
 
+    @archive.attachment = params[:attachment]
+
     if @archive.save
       render json: @archive, status: :created, location: @archive
     else

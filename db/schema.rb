@@ -22,17 +22,17 @@ ActiveRecord::Schema.define(version: 20181026110236) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           default: "", null: false
-    t.string   "password_digest", default: "", null: false
-    t.string   "name",                         null: false
-    t.date     "birthday",                     null: false
-    t.integer  "session_absence", default: 0,  null: false
-    t.integer  "project_absence", default: 0,  null: false
-    t.integer  "penalty",         default: 0,  null: false
-    t.integer  "project_id",                   null: false
-    t.string   "user_photo",                   null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "email",           default: "",           null: false
+    t.string   "password_digest", default: "",           null: false
+    t.string   "name",            default: "123",        null: false
+    t.date     "birthday",        default: '1997-11-13', null: false
+    t.integer  "session_absence", default: 0,            null: false
+    t.integer  "project_absence", default: 0,            null: false
+    t.integer  "penalty",         default: 0,            null: false
+    t.integer  "project_id",      default: 0,            null: false
+    t.string   "user_photo",      default: "null",       null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
 end

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026100042) do
+ActiveRecord::Schema.define(version: 20181026110236) do
+
+  create_table "archives", force: :cascade do |t|
+    t.string   "archive_title"
+    t.string   "archive_content"
+    t.datetime "archive_upload_at"
+    t.string   "attachment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           default: "", null: false

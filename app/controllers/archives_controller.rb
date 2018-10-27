@@ -17,12 +17,23 @@ class ArchivesController < ApplicationController
   def create
     @archive = Archive.new(archive_params)
 
-    if @archive.save
-      render json: @archive, status: :created, location: @archive
-    else
-      render json: @archive.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @archive.save
+  #     render json: @archive, status: :created, location: @archive
+  #   else
+  #     render json: @archive.errors, status: :unprocessable_entity
+  #   end
+  # end
+
+  if @archive.save
+     #iterate through each of the files
+     params[:archive].each do |file|
+         @item.attachment.create!(:attachment => file)
+         #create a document associated with the item that has just been created
+     end
+     render :show, status: :created, location: @archive
+   else
+     render json: @archive.errors, status: :unprocessable_entity
+   end
 
   # PATCH/PUT /archives/1
   def update
@@ -46,6 +57,6 @@ class ArchivesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def archive_params
-      params.fetch(:archive, {})
+      params.require(:archive).permit(:archive_title, :archive_content, :archive_apload_at, :attachment)
     end
 end

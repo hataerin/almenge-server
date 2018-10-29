@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20181029051900) do
     t.integer  "project_id"
     t.string   "absentee"
     t.string   "project_meeting_memo"
-    t.string   "project_meeting_upload_at"
+    t.datetime "project_meeting_upload_at"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "project_meeting_photo_file_name"

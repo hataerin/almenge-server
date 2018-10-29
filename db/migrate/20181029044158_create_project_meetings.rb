@@ -6,7 +6,7 @@ class CreateProjectMeetings < ActiveRecord::Migration[5.0]
     	# t.string :project_meeting_photo
     	t.string :absentee
     	t.string :project_meeting_memo
-    	t.string :project_meeting_upload_at
+    	t.datetime :project_meeting_upload_at
 
     	t.timestamps
     end

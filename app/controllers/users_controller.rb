@@ -48,4 +48,24 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo)
     end
+
+
+
+
+    ###  기능구현 ########################
+
+
+    # email 중복체크 
+    def check_duplicate?
+    # 중복이 있으면 true 없으면 false
+    param! :email, String, required: true
+    user = User.find_by(email: params[:email])
+    res = user.nil? ? false : true
+    { result: res}.to_json
+   end
+
+
+  ###  기능구현 ########################
+
+
 end

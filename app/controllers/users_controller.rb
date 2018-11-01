@@ -8,18 +8,29 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+  
+  # 지각비 랭킹 출력 
   def penaltyRanking
-    @penaltyRanking = User.all.select(:penalty)
-    @penaltyRanking.sort.reverse
+    penaltyRanking = User.all.select(:penalty)
+    @penaltyRanking = @penaltyRanking.order(penalty: :desc).take(3)
 
     #for i in 0..2
 
     #end
-
-
     render json: @penaltyRanking
   end
 
+  #해당월 입력시 생일자 출력 
+  def getUserInfoByBirthMonth
+    
+    
+  end
+
+
+  #프로젝트 멤버 출력 
+  def getProjectMember
+    @getProjectMember =User.find(params[:project_id]).select(:id)
+  end
   # GET /users/1
   def show
     render json: @user

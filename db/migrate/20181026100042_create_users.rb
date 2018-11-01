@@ -11,11 +11,11 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     	#생년월일
     	t.date :birthday,             null: false
     	#세션결석횟수
-    	t.integer :session_absence
+    	t.integer :session_absence,    null: false, default: 0
     	#플젝결석횟수
-    	t.integer :project_absence
+    	t.integer :project_absence,    null: false, default: 0
     	#지각비
-    	t.integer :penalty
+    	t.integer :penalty,    null: false, default: 0
     	#소속프로젝트
     	t.integer :project_id,        null: false
     	#프로필사진

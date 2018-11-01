@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'penaltyRanking', to: 'users#penaltyRanking'
 
   post 'authenticate', to: 'authentication#authenticate'
+
+  post 'getProjectMember', to: 'users#getProjectMember'
 end

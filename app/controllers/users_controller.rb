@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: :create, raise: false
+  skip_before_action :authenticate_user, only: %i[create check_duplicates], raise: false
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -11,8 +11,13 @@ class UsersController < ApplicationController
   
   # 지각비 랭킹 출력 
   def penaltyRanking
-    user_penalty_order = User.order(penalty: :desc).take(3)
-    render json: user_penalty_order.as_json(only: %i[id penalty])
+    penaltyRanking = User.all.select(:penalty)
+    @penaltyRanking = @penaltyRanking.order(penalty: :desc).take(3)
+
+    #for i in 0..2
+
+    #end
+    render json: @penaltyRanking
   end
 
   #해당월 입력시 생일자 출력 
@@ -52,7 +57,7 @@ class UsersController < ApplicationController
   def destroy; @user.destroy; end
 
   # email 중복체크
-  def check_duplicates
+  def check_duplicates?
     # 중복이 있으면 true 없으면 false
     param! :email, String, required: true
     user = User.find_by(email: params[:email])
@@ -61,6 +66,9 @@ class UsersController < ApplicationController
   end
 
   private
+
+
   def set_user; @user = User.find(params[:id]); end
   def user_params; params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo); end
+
 end

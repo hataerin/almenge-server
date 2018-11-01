@@ -11,7 +11,7 @@ class SessionAttendancesController < ApplicationController
 
   #출석체크
   def countSessionAttendance
-    @countSessionAttendance = SessionAttendance.find()
+    @countSessionAttendance = SessionAttendance.find_by(:late >0)
   end
   # GET /session_attendances/1
   def show

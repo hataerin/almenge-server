@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :archives
   resources :users
 
-  get 'users/check/:email' => 'users#check_duplicates'
+  get 'check_duplicates' => 'users#check_duplicates'
   get 'penaltyRanking' => 'users#penaltyRanking'
   post 'authenticate' => 'authentication#authenticate'
   post 'getProjectMember' => 'users#getProjectMember'

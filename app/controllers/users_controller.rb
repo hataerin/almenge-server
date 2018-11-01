@@ -57,12 +57,12 @@ class UsersController < ApplicationController
   def destroy; @user.destroy; end
 
   # email 중복체크
-  def check_duplicates?
+  def check_duplicates
     # 중복이 있으면 true 없으면 false
     param! :email, String, required: true
     user = User.find_by(email: params[:email])
     res = user.nil? ? false : true
-    { result: res }.to_json
+    render json: { result: res }.to_json
   end
 
   private

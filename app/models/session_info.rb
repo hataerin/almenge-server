@@ -1,0 +1,2 @@
+class SessionInfo < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class ProjectProfile < ApplicationRecord
+end

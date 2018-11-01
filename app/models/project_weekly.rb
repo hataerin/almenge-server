@@ -1,0 +1,2 @@
+class ProjectWeekly < ApplicationRecord
+end

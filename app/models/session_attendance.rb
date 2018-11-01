@@ -1,0 +1,2 @@
+class SessionAttendance < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026110236) do
+ActiveRecord::Schema.define(version: 20181101043436) do
 
   create_table "archives", force: :cascade do |t|
     t.string   "archive_title"
@@ -19,6 +19,46 @@ ActiveRecord::Schema.define(version: 20181026110236) do
     t.string   "attachment"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "project_meetings", force: :cascade do |t|
+    t.integer  "project_meeting_id"
+    t.string   "project_meeting_photo"
+    t.string   "absentee"
+    t.string   "project_meeting_memo"
+    t.datetime "project_meeting_upload_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "project_profiles", force: :cascade do |t|
+    t.string   "project_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "project_weeklies", force: :cascade do |t|
+    t.integer  "project_week"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "session_attendances", force: :cascade do |t|
+    t.integer  "session_info_id"
+    t.integer  "user_id"
+    t.integer  "session_attendance"
+    t.integer  "late"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "session_infos", force: :cascade do |t|
+    t.datetime "session_datetime"
+    t.string   "session_place"
+    t.string   "session_activity"
+    t.string   "session_content"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

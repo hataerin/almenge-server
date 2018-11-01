@@ -1,0 +1,2 @@
+class ProjectMeeting < ApplicationRecord
+end

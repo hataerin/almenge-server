@@ -32,14 +32,11 @@ class UsersController < ApplicationController
     @getProjectMember =User.find(params[:project_id]).select(:id)
   end
   # GET /users/1
-  def show
-    render json: @user
-  end
+  def show; render json: @user; end
 
   # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
       render json: @user, status: :created, location: @user
     else
@@ -57,25 +54,21 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  def destroy
-    @user.destroy
+  def destroy; @user.destroy; end
+
+  # email 중복체크
+  def check_duplicates?
+    # 중복이 있으면 true 없으면 false
+    param! :email, String, required: true
+    user = User.find_by(email: params[:email])
+    res = user.nil? ? false : true
+    { result: res }.to_json
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :session_absence, :project_absence, :penalty, :project_id, :user_photo)
-    end
 
 
-
-
-
-
+  def set_user; @user = User.find(params[:id]); end
+  def user_params; params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo); end
 
 end

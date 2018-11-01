@@ -2,6 +2,7 @@ class ProjectMeetingsController < ApplicationController
   before_action :set_project_meeting, only: [:show, :update, :destroy]
 
   # GET /project_meetings
+<<<<<<< HEAD
   def index
     @project_meetings = ProjectMeeting.all
 
@@ -14,26 +15,32 @@ class ProjectMeetingsController < ApplicationController
   end
 
   # POST /project_meetings
+
   def create
     @project_meeting = ProjectMeeting.new(project_meeting_params)
 
     if @project_meeting.save
+
       render json: @project_meeting, status: :created, location: @project_meeting
+
     else
       render json: @project_meeting.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /project_meetings/1
+ 
+  # PATCH/PUT /project_meetings/1.json
   def update
     if @project_meeting.update(project_meeting_params)
-      render json: @project_meeting
+      render :show, status: :ok, location: @project_meeting
+
     else
       render json: @project_meeting.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /project_meetings/1
+  # DELETE /project_meetings/1.json
+
   def destroy
     @project_meeting.destroy
   end
@@ -44,8 +51,12 @@ class ProjectMeetingsController < ApplicationController
       @project_meeting = ProjectMeeting.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+
+    # Never trust parameters from the scary internet, only allow the white list through.
     def project_meeting_params
-       params.require(:project_meeting).permit(:project_id, :project_meeting_photo, :absentee, :project_meeting_memo, :project_meeting_upload_at)
+      # params.fetch(:project_meeting, {})
+
+      params.require(:project_meeting).permit(:project_id, :absentee , :project_meeti_upload_at , :project_meeting_photo) # Add :picture as a permitted parameter
+
     end
 end

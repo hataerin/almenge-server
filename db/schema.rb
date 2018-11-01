@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181029051900) do
-
+ActiveRecord::Schema.define(version: 20181101043436) do
 
   create_table "archives", force: :cascade do |t|
     t.string   "archive_title"
@@ -24,13 +23,15 @@ ActiveRecord::Schema.define(version: 20181029051900) do
 
   create_table "project_meetings", force: :cascade do |t|
     t.integer  "project_id"
-
-    t.string   "project_meeting_photo"
+    t.string   "project_meeting_photo_file_name"
+    t.string   "project_meeting_photo_content_type"
+    t.bigint   "project_meeting_photo_file_size"
+    t.datetime "project_meeting_photo_updated_at"
     t.string   "absentee"
     t.text     "project_meeting_memo"
     t.datetime "project_meeting_upload_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "project_profiles", force: :cascade do |t|
@@ -61,17 +62,6 @@ ActiveRecord::Schema.define(version: 20181029051900) do
     t.string   "session_content"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-
-    t.string   "absentee"
-    t.string   "project_meeting_memo"
-    t.datetime "project_meeting_upload_at"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.string   "project_meeting_photo_file_name"
-    t.string   "project_meeting_photo_content_type"
-    t.bigint   "project_meeting_photo_file_size"
-    t.datetime "project_meeting_photo_updated_at"
-
   end
 
   create_table "users", force: :cascade do |t|

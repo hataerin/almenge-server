@@ -23,15 +23,12 @@ ActiveRecord::Schema.define(version: 20181101043436) do
 
   create_table "project_meetings", force: :cascade do |t|
     t.integer  "project_id"
-    t.string   "project_meeting_photo_file_name"
-    t.string   "project_meeting_photo_content_type"
-    t.bigint   "project_meeting_photo_file_size"
-    t.datetime "project_meeting_photo_updated_at"
+    t.string   "project_meeting_photo"
     t.string   "absentee"
     t.text     "project_meeting_memo"
     t.datetime "project_meeting_upload_at"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "project_profiles", force: :cascade do |t|

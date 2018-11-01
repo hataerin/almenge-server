@@ -3,7 +3,7 @@ class CreateProjectMeetings < ActiveRecord::Migration[5.0]
     create_table :project_meetings do |t|
 
     	t.integer :project_id
-    	t.attachment :project_meeting_photo
+    	t.string :project_meeting_photo
     	t.string :absentee
     	t.text :project_meeting_memo
     	t.datetime :project_meeting_upload_at

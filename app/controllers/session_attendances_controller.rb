@@ -9,10 +9,7 @@ class SessionAttendancesController < ApplicationController
   end
 
 
-  #출석체크
-  def countSessionAttendance
-    @countSessionAttendance = SessionAttendance.find()
-  end
+  
   # GET /session_attendances/1
   def show
     render json: @session_attendance

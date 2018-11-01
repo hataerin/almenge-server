@@ -46,6 +46,6 @@ class ProjectWeekliesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_weekly_params
-      params.fetch(:project_weekly, {})
+       params.require(:project_weekly).permit(:project_week)
     end
 end

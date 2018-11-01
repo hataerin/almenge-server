@@ -46,6 +46,6 @@ class SessionAttendancesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def session_attendance_params
-      params.fetch(:session_attendance, {})
+       params.require(:session_attendance).permit(:session_info_id, :user_id, :session_attendance, :late)
     end
 end

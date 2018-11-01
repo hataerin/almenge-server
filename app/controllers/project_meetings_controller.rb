@@ -46,6 +46,6 @@ class ProjectMeetingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_meeting_params
-      params.fetch(:project_meeting, {})
+       params.require(:project_meeting).permit(:project_id, :project_meeting_photo, :absentee, :project_meeting_memo, :project_meeting_upload_at)
     end
 end

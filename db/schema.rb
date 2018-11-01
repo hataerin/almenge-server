@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20181101043436) do
   end
 
   create_table "project_meetings", force: :cascade do |t|
-    t.integer  "project_meeting_id"
+    t.integer  "project_id"
     t.string   "project_meeting_photo"
     t.string   "absentee"
-    t.string   "project_meeting_memo"
+    t.text     "project_meeting_memo"
     t.datetime "project_meeting_upload_at"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20181101043436) do
   create_table "session_attendances", force: :cascade do |t|
     t.integer  "session_info_id"
     t.integer  "user_id"
-    t.integer  "session_attendance"
+    t.boolean  "session_attendance"
     t.integer  "late"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false

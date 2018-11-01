@@ -46,6 +46,6 @@ class ProjectProfilesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_profile_params
-      params.fetch(:project_profile, {})
+      params.require(:project_profile).permit(:project_name)
     end
 end

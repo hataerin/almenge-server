@@ -8,6 +8,18 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+  def penaltyRanking
+    @penaltyRanking = User.all.select(:penalty)
+    @penaltyRanking.sort.reverse
+
+    #for i in 0..2
+
+    #end
+
+
+    render json: @penaltyRanking
+  end
+
   # GET /users/1
   def show
     render json: @user
@@ -46,6 +58,13 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo)
+      params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :session_absence, :project_absence, :penalty, :project_id, :user_photo)
     end
+
+
+
+
+
+
+
 end

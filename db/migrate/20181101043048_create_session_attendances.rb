@@ -4,7 +4,7 @@ class CreateSessionAttendances < ActiveRecord::Migration[5.0]
 
     	t.integer :session_info_id
     	t.integer :user_id
-    	t.integer :session_attendance
+    	t.boolean :session_attendance
     	t.integer :late
 
       t.timestamps

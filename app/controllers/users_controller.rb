@@ -11,13 +11,8 @@ class UsersController < ApplicationController
   
   # 지각비 랭킹 출력 
   def penaltyRanking
-    penaltyRanking = User.all.select(:penalty)
-    @penaltyRanking = @penaltyRanking.order(penalty: :desc).take(3)
-
-    #for i in 0..2
-
-    #end
-    render json: @penaltyRanking
+    user_penalty_order = User.order(penalty: :desc).take(3)
+    render json: user_penalty_order.as_json(only: %i[id penalty])
   end
 
   #해당월 입력시 생일자 출력 
@@ -66,9 +61,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-
   def set_user; @user = User.find(params[:id]); end
   def user_params; params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo); end
-
 end

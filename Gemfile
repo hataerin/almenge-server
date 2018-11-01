@@ -49,6 +49,7 @@ group :development do
   gem 'capistrano3-puma'
 end
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_param'
 gem 'kaminari'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] #window specific

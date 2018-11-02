@@ -11,24 +11,28 @@ class UsersController < ApplicationController
   
   # 지각비 랭킹 출력 
   def penaltyRanking
-    penaltyRanking = User.all.select(:penalty)
+    penaltyRanking = User.select(:penalty)
     @penaltyRanking = @penaltyRanking.order(penalty: :desc).take(3)
-
-    #for i in 0..2
-
-    #end
     render json: @penaltyRanking
   end
 
   
 
 
-  #프로젝트 멤버 출력 
+  #프로젝트 멤버 id출력 
   def getProjectMember
-    @getProjectMember =User.find(params[:project_id]).select(:id)
+    @getProjectMember =User.where(project_id:params[:project_id]).select(:id)
+    render json: @getProjectMember
   end
 
-  
+  #멤버별 프로젝트 출결상황 
+  def getProjectAbsence
+    @getProjectAbsence =User.where(id:params[:id]).select(:project_absence)
+   
+    render json: @getProjectAbsence
+  end
+
+
   # GET /users/1
   def show; render json: @user; end
 
@@ -68,5 +72,7 @@ class UsersController < ApplicationController
 
   def set_user; @user = User.find(params[:id]); end
   def user_params; params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo); end
+
+  
 
 end

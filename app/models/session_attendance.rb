@@ -7,9 +7,11 @@ class SessionAttendance < ApplicationRecord
   end
 
   def update_penalty
-    # 출석을 안하면 return nil
+    # 출석을 안하면 ㅕsession.absence +1
     unless check_attendance
-      return nil
+      user = User.find_by(id: user_id)
+      user.session_absence += 1
+      user.save
     end
     # 지각을 안하면 late == 0 이면 return nil
     if late.zero?

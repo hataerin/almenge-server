@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  
-  # 지각비 랭킹 출력 
+
+  # 지각비 랭킹 출력
   def penaltyRanking
     penaltyRanking = User.all.select(:penalty)
     @penaltyRanking = @penaltyRanking.order(penalty: :desc).take(3)
@@ -20,15 +20,15 @@ class UsersController < ApplicationController
     render json: @penaltyRanking
   end
 
-  
 
 
-  #프로젝트 멤버 출력 
+
+  #프로젝트 멤버 출력
   def getProjectMember
     @getProjectMember =User.find(params[:project_id]).select(:id)
   end
 
-  
+
   # GET /users/1
   def show; render json: @user; end
 
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      params[:user_photo][:]
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity

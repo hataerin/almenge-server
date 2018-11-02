@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     @getProjectMember =User.find(params[:project_id]).select(:id)
   end
 
+  def getSessionAttendanceArray
+    @getSessionAttendanceArray = User.find(params[:id]).session_attendances.select(:session_attendance).map {|e| e.attributes.values}
+  end
+
 
   # GET /users/1
   def show; render json: @user; end

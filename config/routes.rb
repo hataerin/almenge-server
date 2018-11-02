@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'archives#index'
   get 'archives/new' => 'archives#new'
 
-
+  post 'getSessionAttendanceArray' => 'users#getSessionAttendanceArray'
   get 'check_duplicates' => 'users#check_duplicates'
   get 'penaltyRanking' => 'users#penaltyRanking'
   post 'authenticate' => 'authentication#authenticate'

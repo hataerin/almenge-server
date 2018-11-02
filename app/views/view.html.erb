@@ -1,0 +1,10 @@
+<p>사진 업로드 확인</p>
+
+<%= form_for(@user) do |f| %>
+<div class = "field">
+  <%=f.label :user_photo %><br>
+  <%=f.file_field :user_photo, autocomplete: "off" %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>

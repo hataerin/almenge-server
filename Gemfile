@@ -6,7 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 
-gem "paperclip"
+#gem "paperclip"
+gem 'carrierwave', '~>1.0'
+
 
 
 

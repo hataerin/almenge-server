@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   resources :project_profiles
   resources :archives
   resources :users
+  root 'archives#index'
+  get 'archives/new' => 'archives#new'
+
 
   get 'check_duplicates' => 'users#check_duplicates'
   get 'penaltyRanking' => 'users#penaltyRanking'
   post 'authenticate' => 'authentication#authenticate'
   post 'getProjectMember' => 'users#getProjectMember'
+
 end

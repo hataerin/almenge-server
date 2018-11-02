@@ -39,3 +39,5 @@ class SessionAttendance < ApplicationRecord
 
 
 end
+
+

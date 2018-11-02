@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<%= current_user.email%>님 환영합니다.
+<a href="/users/sign_out" data-method="delete">로그아웃</a> <!-- 로그아웃 기능  -->
+
+<h1>Listing Archives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Attachment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @archives.each do |archive| %>
+      <tr>
+        <td><%= archive.title %></td>
+        <td><%= archive.content %></td>
+        <td><%= archive.attachment %></td>
+        <td><%= link_to 'Show', archive %></td>
+        <td><%= link_to 'Edit', edit_archive_path(archive) %></td>
+        <td><%= link_to 'Destroy', archive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Archive', new_archive_path %>

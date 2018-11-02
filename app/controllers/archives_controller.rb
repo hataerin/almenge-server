@@ -1,5 +1,6 @@
 class ArchivesController < ApplicationController
   before_action :set_archive, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user
 
   # GET /archives
   def index
@@ -46,6 +47,6 @@ class ArchivesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def archive_params
-      params.fetch(:archive, {})
+      params.require(:archive).permit(:archive_title, :archive_content, :attachment)
     end
 end

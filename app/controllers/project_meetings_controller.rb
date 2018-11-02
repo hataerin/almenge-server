@@ -56,7 +56,7 @@ class ProjectMeetingsController < ApplicationController
     def project_meeting_params
       # params.fetch(:project_meeting, {})
 
-      params.require(:project_meeting).permit(:project_id, :project_meeting_photo, :absentee, :project_meeting_memo , :project_meeting_upload_at ) # Add :picture as a permitted parameter
+      params.require(:project_meeting).permit(:project_profile_id, :project_meeting_photo, :absentee, :project_meeting_memo , :project_meeting_upload_at ) # Add :picture as a permitted parameter
 
     end
 end

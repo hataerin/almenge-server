@@ -17,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     	#지각비
     	t.integer :penalty,    null: false, default: 0
     	#소속프로젝트
-    	t.integer :project_id,        null: false
+    	t.integer :project_profile_id,        null: false
     	#프로필사진
     	t.string :user_photo,         null: false
 

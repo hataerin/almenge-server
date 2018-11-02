@@ -46,6 +46,6 @@ class ArchivesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def archive_params
-      params.fetch(:archive, {})
+      params.require(:archive).permit(:archive_title, :archive_content, :archive_upload_at, :attachment)
     end
 end

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   #프로젝트 멤버 id출력 
   def getProjectMember
-    @getProjectMember =User.where(project_id:params[:project_id]).select(:id)
+    @getProjectMember =User.where(project_profile_id:params[:project_profile_id]).select(:id)
     render json: @getProjectMember
   end
 
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
 
   def set_user; @user = User.find(params[:id]); end
-  def user_params; params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_id, :user_photo); end
+  def user_params; params.require(:user).permit( :email, :password, :password_confirmation, :name, :birthday, :name, :project_profile_id, :user_photo); end
 
   
 

@@ -11,16 +11,17 @@ class ProjectMeeting < ApplicationRecord
   #  :content_type => { :content_type => "image/jpg" },
   #  :size => { :in => 0..10.kilobytes }
 
-  def update_project_absence(absentees)
-
+  def update_project_absence
+    absentee.strip!
   	absentee_list = absentee.split(",")
 
-  	absentee.trim
-
-  	absentee_list.each do |absentee|
+  	absentee_list.each do |user_name|
   		user = User.find_by(name: user_name)
-  		user.project_absence += 1
-  		user.save
+      if !user.nil?
+
+  		  user.project_absence += 1
+  		  user.save
+      end
     end
   end
 
